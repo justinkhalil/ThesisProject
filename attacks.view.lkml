@@ -1,73 +1,86 @@
-- view: attacks
-  sql_table_name: public.attacks
-  fields:
+view: attacks {
+  sql_table_name: public.attacks ;;
 
-  - dimension: activity
+  dimension: activity {
     type: string
-    sql: ${TABLE}.activity
+    sql: ${TABLE}.activity ;;
     drill_fields: [age, species, date, fatal]
+  }
 
-  - dimension: age
+  dimension: age {
     type: string
-    sql: ${TABLE}.age
+    sql: ${TABLE}.age ;;
+  }
 
-  - dimension: area
+  dimension: area {
     type: string
-    sql: ${TABLE}.area
+    sql: ${TABLE}.area ;;
+  }
 
-  - dimension: case_number
+  dimension: case_number {
     type: string
-    sql: ${TABLE}.case_number
+    sql: ${TABLE}.case_number ;;
+  }
 
-  - dimension: country
+  dimension: country {
     type: string
-    sql: ${TABLE}.country
+    sql: ${TABLE}.country ;;
+  }
 
-  - dimension: date
+  dimension: date {
     type: string
-    sql: ${TABLE}.date
+    sql: ${TABLE}.date ;;
+  }
 
-  - dimension: fatal
+  dimension: fatal {
     type: string
-    sql: ${TABLE}.fatal
+    sql: ${TABLE}.fatal ;;
+  }
 
-  - dimension: injury
+  dimension: injury {
     type: string
-    sql: ${TABLE}.injury
+    sql: ${TABLE}.injury ;;
+  }
 
-  - dimension: location_og
+  dimension: location_og {
     type: string
-    sql: ${TABLE}.location
+    sql: ${TABLE}.location ;;
+  }
 
-  - dimension: name
+  dimension: name {
     type: string
-    sql: ${TABLE}.name
+    sql: ${TABLE}.name ;;
+  }
 
-  - dimension: sex
+  dimension: sex {
     type: string
-    sql: ${TABLE}.sex
+    sql: ${TABLE}.sex ;;
+  }
 
-  - dimension: species
+  dimension: species {
     type: string
-    sql: ${TABLE}.species
+    sql: ${TABLE}.species ;;
+  }
 
-  - dimension: time
+  dimension: time {
     type: string
-    sql: ${TABLE}.time
+    sql: ${TABLE}.time ;;
+  }
 
-  - dimension: type
+  dimension: type {
     type: string
-    sql: ${TABLE}.type
+    sql: ${TABLE}.type ;;
+  }
 
-  - dimension: year
+  dimension: year {
     type: number
-    sql: ${TABLE}.year
-    
-  - dimension: latitude
+    sql: ${TABLE}.year ;;
+  }
+
+  dimension: latitude {
     type: number
     value_format_name: id
-    sql: |
-      CASE WHEN ${location_og} = 'New Smyrna Beach Volusia County' THEN 29.0258
+    sql: CASE WHEN ${location_og} = 'New Smyrna Beach Volusia County' THEN 29.0258
       WHEN ${location_og} = 'Daytona Beach Volusia County' THEN 29.2108
       WHEN ${location_og} = 'Myrtle Beach Horry County' THEN 33.6891
       WHEN ${location_og} = 'Ponce Inlet Volusia County' THEN  29.0964
@@ -78,12 +91,13 @@
       WHEN ${location_og} = 'Cocoa Beach Brevard County' THEN 28.3200
       ELSE NULL
       END
-      
-  - dimension: longitude
+       ;;
+  }
+
+  dimension: longitude {
     type: number
     value_format_name: id
-    sql: |
-      CASE WHEN ${location_og} = 'New Smyrna Beach Volusia County' THEN -80.9270
+    sql: CASE WHEN ${location_og} = 'New Smyrna Beach Volusia County' THEN -80.9270
       WHEN ${location_og} = 'Daytona Beach Volusia County' THEN -81.0228
       WHEN ${location_og} = 'Myrtle Beach Horry County' THEN -78.8867
       WHEN ${location_og} = 'Ponce Inlet Volusia County' THEN -80.9370
@@ -94,14 +108,17 @@
       WHEN ${location_og} = 'Cocoa Beach Brevard County' THEN -80.6076
       ELSE NULL
       END
-      
-  - dimension: location
+       ;;
+  }
+
+  dimension: location {
     type: location
-    sql_latitude: ${latitude}
-    sql_longitude: ${longitude}
-    
-    
-  - measure: count
+    sql_latitude: ${latitude} ;;
+    sql_longitude: ${longitude} ;;
+  }
+
+  measure: count {
     type: count
     drill_fields: [name]
-
+  }
+}
